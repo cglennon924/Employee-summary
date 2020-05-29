@@ -48,7 +48,9 @@ async function prompt(){
     const answer = "";
 
     do{
-        
+       try{
+           (if Response.role === "manager")
+       } 
     }
 }
 
