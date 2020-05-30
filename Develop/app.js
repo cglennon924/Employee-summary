@@ -107,7 +107,13 @@ async function outline() {
     // Render employeeArray to create html for each employee class
     const renderdArray = render(employeeEl)
 
-    fs.writeFile("")
+    fs.writeFile("main.html", renderdArray, function(err){
+        if (err){
+            return(err)
+            
+        }else{(writeFile === "true")
+        console.log("Congrats on your new file!")}
+    })
 
     // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
