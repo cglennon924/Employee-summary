@@ -52,7 +52,7 @@ async function outline() {
             answerA = await inquirer.prompt(sheet)
             let answerB = '';
             
-            // If the employee is a manager they will be promoted for the their office number
+                 // The Engineer will be asked for his github information
             if (answerA.role === "Engineer") {
                 answerB = await inquirer.prompt([{
                     name: "github",
@@ -61,10 +61,9 @@ async function outline() {
                 }])
                 // The new employee depending on class is then passed into an object and object is pushed to Employee Array
                 const manager = new Engineer(answerA.name, answerA.id, answerA.email, answerB.github)
-                employeeArray.push(engineer)
+                employeeEl.push(engineer)
 
-                
-                // If the employee is an Engineer they will be promoted for their github username
+                 // The Manager would be asked for their office number?
             } else if (answerA.role === "Manager") {
                 answerB = await inquirer.prompt([{
                     name: "officeNumber",
@@ -74,7 +73,7 @@ async function outline() {
                 }])
                 // The new employee depending on class is then passed into an object and object is pushed to Employee Array
                 const engineer = new Manager(answerA.name, answerA.id, answerA.email, answerB.officeNumber)
-                employeeArray.push(manager)
+                employeeEl.push(manager)
                
                
                 // If the employee is an Intern they will be prompted for their college
@@ -84,9 +83,9 @@ async function outline() {
                     type: "input",
                     message: "What college does the Intern go to?"
                 }])
-                // The new employee depending on class is then passed into an object and object is pushed to Employee Array
+                // The new employee  is then passed into an object and then goes into an Employee Array
                 const intern = new Intern(answerA.name, answerA.id, answerA.email, answerB.school)
-                employeeArray.push(intern)
+                employeeEl.push(intern)
             }
 
         } catch (err) {
@@ -103,12 +102,12 @@ async function outline() {
             ]
         }])
 
-    }while(lastAnswer.finish ==="Yes")
+    }while(lastAnswer.finish ==="Yes" || "No")
 
     // Render employeeArray to create html for each employee class
-    const renderdArray = render(employeeArray)
+    const renderdArray = render(employeeEl)
 
-    fs.writeFile()
+    fs.writeFile("")
 
     // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
