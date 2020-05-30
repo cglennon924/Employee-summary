@@ -15,7 +15,7 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 // Questions stored in object array
-const prompt = [{
+const sheet = [{
     name: "name",
     type: "input",
     message: "What is the employee's name?"
@@ -25,6 +25,7 @@ const prompt = [{
     type: "number",
     message: "What is the employee's id number"
 },
+
 {
     name: "email",
     type: "input",
@@ -40,22 +41,73 @@ const prompt = [{
         "Intern"
     ]
 }
-];
+]
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
-async function prompt(){
-    const answer = "";
+async function outline() {
+    let finishResponse = "";
+    do {
+        try {
+            answerA = await inquirer.prompt(sheet)
+            let answerB = '';
+            
+            // If the employee is a manager they will be promoted for the their office number
+            if (answerA.role === "Engineer") {
+                answerB = await inquirer.prompt([{
+                    name: "github",
+                    type: "input",
+                    message: "What is the Engineer's github username?"
+                }])
+                // The new employee depending on class is then passed into an object and object is pushed to Employee Array
+                const manager = new Engineer(answerA.name, answerA.id, answerA.email, answerB.github)
+                employeeArray.push(engineer)
 
-    do{
-       try{
-           (if Response.role === "manager")
-       } 
-    }
-}
+                
+                // If the employee is an Engineer they will be promoted for their github username
+            } else if (answerA.role === "Manager") {
+                answerB = await inquirer.prompt([{
+                    name: "officeNumber",
+                    type: "input",
+                    message: "What is the Manager's office number?"
+                
+                }])
+                // The new employee depending on class is then passed into an object and object is pushed to Employee Array
+                const engineer = new Manager(answerA.name, answerA.id, answerA.email, answerB.officeNumber)
+                employeeArray.push(manager)
+               
+               
+                // If the employee is an Intern they will be prompted for their college
+            } else if (answerA.role === "Intern") {
+                answerB = await inquirer.prompt([{
+                    name: "school",
+                    type: "input",
+                    message: "What college does the Intern go to?"
+                }])
+                // The new employee depending on class is then passed into an object and object is pushed to Employee Array
+                const intern = new Intern(answerA.name, answerA.id, answerA.email, answerB.school)
+                employeeArray.push(intern)
+            }
 
+        } catch (err) {
+            return console.log(err)
+        }
+    
+    lastAnswer = await inquirer.prompt([{
+            name: "End",
+            type: "list",
+            message: "Are you considering adding another Employee to this list?",
+            choices: [
+                "Yes",
+                "No"
+            ]
+        }])
 
-// After you have your html, you're now ready to create an HTML file using the HTML
+    }while(lastAnswer.finish ==="Yes")
+
+    
+
+    // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
