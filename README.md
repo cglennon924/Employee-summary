@@ -1,5 +1,7 @@
 # Employee-summary
 https://cglennon924.github.io/Employee-summary/output/main.html
+https://giphy.com/gifs/f9SbFb25Mv2EfMM0T7/html5
+
 ```
 As a manager
 I want to generate a webpage that displays my team's basic info
