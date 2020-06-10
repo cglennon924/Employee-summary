@@ -60,7 +60,7 @@ async function outline() {
                 }])
                 // The new employee depending on class is then passed into an object and object is pushed to Employee Array
                 const manager = new Engineer(answerA.name, answerA.id, answerA.email, answerB.github)
-                employeeEl.push(engineer)
+                employeeEl.push()
 
                  // The Manager would be asked for their office number?
             } else if (answerA.role === "Manager") {
@@ -72,7 +72,7 @@ async function outline() {
                 }])
                 // The new employee depending on class is then passed into an object and object is pushed to Employee Array
                 const engineer = new Manager(answerA.name, answerA.id, answerA.email, answerB.officeNumber)
-                employeeEl.push(manager)
+                employeeEl.push()
                
                
                 // If the employee is an Intern they will be prompted for their college
@@ -84,7 +84,7 @@ async function outline() {
                 }])
                 // The new employee  is then passed into an object and then goes into an Employee Array
                 const intern = new Intern(answerA.name, answerA.id, answerA.email, answerB.school)
-                employeeEl.push(intern)
+                employeeEl.push()
             }
 
         } catch (err) {
@@ -101,7 +101,7 @@ async function outline() {
             ]
         }])
 
-    }while(lastAnswer.finish ==="Yes" || "No")
+    }while(lastAnswer.finish === "Yes")
 
     // Render employeeArray to create html for each employee class
     const renderdArray = render(employeeEl)
@@ -110,8 +110,8 @@ async function outline() {
         if (err){
             return(err)
             
-        }else{(writeFile === "true")
-        console.log("Congrats on your new file!")}
+        }else
+        console.log("Congrats on your new file!")
     })
 }
 
