@@ -5,9 +5,9 @@ https://giphy.com/gifs/f9SbFb25Mv2EfMM0T7/html5
 
 ## User Story
 ```
-As a manager
-I want to generate a webpage that displays my team's basic info
-so that I have quick access to emails and GitHub profiles
+AS A manager
+I WANT to generate a webpage that displays my team's basic info
+SO THAT I have quick access to emails and GitHub profiles
 ```
 
 ## Description
